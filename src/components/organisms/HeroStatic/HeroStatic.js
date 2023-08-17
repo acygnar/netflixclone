@@ -4,6 +4,7 @@ import { Wrapper, Content, Shadow } from './HeroStatic.styles';
 import { Title } from 'components/atoms/Title/Title';
 import { Paragraph } from 'components/atoms/Paragraph/Paragraph';
 import Newsletter from 'components/organisms/Newsletter/Newsletter';
+import { DividerBottom } from 'components/atoms/Section/Section.styles';
 
 export default function HeroStatic() {
   return (
@@ -20,6 +21,7 @@ export default function HeroStatic() {
         </Content>
         <Newsletter />
       </Shadow>
+      <DividerBottom />
     </Wrapper>
   );
 }
