@@ -45,9 +45,35 @@ export const DividerBottom = styled.div`
   background-color: rgb(35, 35, 35);
 `;
 
+export const ContentWrapper = styled.div`
+  flex-basis: 50%;
+  padding-right: 0.375rem;
+`;
+
+export const ImageWrapper = styled.div`
+  flex-basis: 50%;
+  padding-right: 0.375rem;
+  position: relative;
+  order: 2;
+  @media screen and (min-width: 960px) {
+    order: 1;
+  }
+  img {
+    width: 100%;
+  }
+
+  & + ${ContentWrapper} {
+    @media screen and (min-width: 960px) {
+      order: 2;
+    }
+  }
+`;
+
 export const VideoWrapper = styled.div`
   position: relative;
   z-index: 2;
+  flex-basis: 50%;
+  padding-left: 0.375rem;
   img {
     width: 100%;
   }
@@ -57,10 +83,10 @@ export const Video = styled.div`
   overflow: hidden;
   width: 100%;
   height: 100%;
-  max-width: 73%;
-  max-height: 54%;
+  max-width: ${({ apple }) => (apple ? '63%' : '73%')};
+  max-height: ${({ apple }) => (apple ? '47%' : '54%')};
   position: absolute;
-  top: 46%;
+  top: ${({ apple }) => (apple ? '34%' : '46%')};
   left: 50%;
   transform: translate(-50%, -50%);
 `;
