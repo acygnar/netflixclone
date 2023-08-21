@@ -1,5 +1,6 @@
 import React from 'react';
-import { Wrapper, Container, DividerBottom, VideoWrapper, Video, ContentWrapper, ImageWrapper } from './Section.styles';
+import { Wrapper, DividerBottom, VideoWrapper, Video, ContentWrapper, ImageWrapper } from './Section.styles';
+import { Container } from 'components/atoms/Container/Container';
 import { Title } from 'components/atoms/Title/Title';
 import { Paragraph } from '../../atoms/Paragraph/Paragraph';
 import Download from 'components/molecules/Download/Download';

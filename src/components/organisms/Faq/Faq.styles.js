@@ -26,6 +26,7 @@ export const FaqList = styled.ul`
   font-weight: 400;
   width: 100%;
   max-width: calc(100% - 3rem);
+  margin-bottom: 34px;
   @media screen and (min-width: 600px) {
     max-width: calc(100% - 4rem);
   }
@@ -34,6 +35,9 @@ export const FaqList = styled.ul`
   }
   @media screen and (min-width: 1280px) {
     max-width: calc(83.33333333333334% - 6rem);
+  }
+  @media screen and (min-width: 1920px) {
+    max-width: calc(66.66666666666666% - 6rem);
   }
 `;
 export const FaqItem = styled.li`
@@ -51,7 +55,20 @@ export const FaqItem = styled.li`
     transition-property: background-color;
     transition-timing-function: cubic-bezier(0.9, 0, 0.51, 1);
     padding: 1.5rem;
+    padding-right: 54px;
+    text-align: left;
+    cursor: pointer;
+    svg {
+      position: absolute;
+      top: calc(50% - 10px);
+      right: 26px;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
     &.active {
+      svg {
+        transform: rotate(-45deg);
+      }
       background-color: rgb(65, 65, 65);
     }
   }

@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import HeroStatic from 'components/organisms/HeroStatic/HeroStatic';
 import Section from 'components/molecules/Section/Section';
 import Faq from 'components/organisms/Faq/Faq';
@@ -11,7 +11,45 @@ import mobile from 'assets/img/mobile-0819.jpeg';
 import children from 'assets/img/children.png';
 import video1 from 'assets/video/video-tv-0819.m4v';
 import video2 from 'assets/video/video-devices.m4v';
+import { Paragraph } from 'components/atoms/Paragraph/Paragraph.js';
+
+export const query = `
+{
+  allFaqs {
+    id
+    question
+    answer
+  } 
+}
+`;
+
 export default function Start() {
+  const [faqs, setFaqs] = useState([]);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    console.log('useEffect');
+    axios
+      .post(
+        'https://graphql.datocms.com/',
+        {
+          query,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${process.env.REACT_APP_DATOCMS_TOKEN}`,
+          },
+        }
+      )
+      .then(({ data: { data } }) => {
+        console.log('data.allFaqs');
+        setFaqs(data.allFaqs);
+        console.log(data.allFaqs);
+      })
+      .catch(() => {
+        setError(`Sorry, we couldn't load faqs for you`);
+      });
+  }, []);
+
   return (
     <Wrapper>
       <HeroStatic />
@@ -43,7 +81,8 @@ export default function Start() {
         image={children}
       />
 
-      <Faq />
+      {faqs && <Faq faqs={faqs} />}
+      {!faqs && <Paragraph>{error}</Paragraph>}
     </Wrapper>
   );
 }

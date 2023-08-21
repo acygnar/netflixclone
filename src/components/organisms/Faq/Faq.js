@@ -3,19 +3,11 @@ import React from 'react';
 import { DividerBottom } from 'components/molecules/Section/Section.styles';
 import { FaqWrapper, FaqList, FaqItem } from './Faq.styles';
 import { Title } from 'components/atoms/Title/Title';
+import { ReactComponent as Cross } from 'assets/svgs/cross.svg';
+import { Paragraph } from 'components/atoms/Paragraph/Paragraph';
+import Newsletter from '../Newsletter/Newsletter';
 
-const faqs = [
-  {
-    q: 'title',
-    a: 'answer',
-  },
-  {
-    q: 'title2',
-    a: 'answer2',
-  },
-];
-
-export default function Faq() {
+export default function Faq({ faqs }) {
   const handleClick = (e) => {
     let question = e.target.nextSibling;
     let current = e.target;
@@ -26,17 +18,21 @@ export default function Faq() {
   return (
     <FaqWrapper>
       <Title center={true} as="h2">
-        Frequently Asked Questions
+        Często zadawane pytania
       </Title>
 
       <FaqList>
         {faqs.map((faq) => (
-          <FaqItem key={faq.q}>
-            <h3 onClick={handleClick}>{faq.q}</h3>
-            <div>{faq.a}</div>
+          <FaqItem key={faq.id}>
+            <h3 onClick={handleClick}>
+              {faq.question} <Cross />
+            </h3>
+            <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
           </FaqItem>
         ))}
       </FaqList>
+      <Paragraph center>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</Paragraph>
+      <Newsletter />
       <DividerBottom />
     </FaqWrapper>
   );

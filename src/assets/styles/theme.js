@@ -3,6 +3,7 @@ export const theme = {
     white: '#FFFFFF',
     black: '#000',
     red: '#db202c',
+    gray: '#cdcdcd',
   },
   fontSize: {
     xl: '50px',
