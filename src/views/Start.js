@@ -5,12 +5,6 @@ import Section from 'components/molecules/Section/Section';
 import Faq from 'components/organisms/Faq/Faq';
 import { Wrapper } from './Start.styles.js';
 
-import tv from 'assets/img/tv.png';
-import appleDevice from 'assets/img/device-pile.png';
-import mobile from 'assets/img/mobile-0819.jpeg';
-import children from 'assets/img/children.png';
-import video1 from 'assets/video/video-tv-0819.m4v';
-import video2 from 'assets/video/video-devices.m4v';
 import { Paragraph } from 'components/atoms/Paragraph/Paragraph.js';
 
 export const query = `
@@ -20,12 +14,38 @@ export const query = `
     question
     answer
   } 
+
+  startPage {
+    heroTitle
+    heroFirstLine
+    heroSecondLine
+    sections {
+      id
+      changeTheVideoFit
+      image {
+        alt
+        url
+      }
+      showDownloadBaner
+      text
+      title
+      video {
+        url
+      }
+      videoMedium {
+        alt
+        url
+      }
+    }
+  }
 }
 `;
 
 export default function Start() {
-  const [faqs, setFaqs] = useState([]);
+  const [faqs, setFaqs] = useState(null);
+  const [startPage, setStartPage] = useState(null);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     console.log('useEffect');
     axios
@@ -41,9 +61,9 @@ export default function Start() {
         }
       )
       .then(({ data: { data } }) => {
-        console.log('data.allFaqs');
         setFaqs(data.allFaqs);
-        console.log(data.allFaqs);
+        setStartPage(data.startPage);
+        console.log(data.startPage);
       })
       .catch(() => {
         setError(`Sorry, we couldn't load faqs for you`);
@@ -52,8 +72,8 @@ export default function Start() {
 
   return (
     <Wrapper>
-      <HeroStatic />
-      <Section
+      {startPage && <HeroStatic title={startPage.heroTitle} first={startPage.heroFirstLine} second={startPage.heroSecondLine} />}
+      {/* <Section
         title="Enjoy on your TV."
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus."
         videoimg={tv}
@@ -78,9 +98,21 @@ export default function Start() {
       <Section
         title="Create profile for children."
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis."
-        image={children}
-      />
-
+        image={children} */}
+      {/* /> */}
+      {startPage &&
+        startPage.sections.map((section) => (
+          <Section
+            key={section.id}
+            title={section.title}
+            content={section.text}
+            videoimg={section.videoMedium}
+            image={section.image}
+            video={section.video}
+            apple={section.changeTheVideoFit}
+            download={section.showDownloadBaner}
+          />
+        ))}
       {faqs && <Faq faqs={faqs} />}
       {!faqs && <Paragraph>{error}</Paragraph>}
     </Wrapper>

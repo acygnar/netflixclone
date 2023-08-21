@@ -10,59 +10,59 @@ export default function Footer() {
     },
     {
       label: 'Investor Relations',
-      url: '/faq',
+      url: '/faq2',
     },
     {
       label: 'Privacy',
-      url: '/faq',
+      url: '/faq3',
     },
     {
       label: 'Speed Test',
-      url: '/faq',
+      url: '/faq4',
     },
     {
       label: 'Help Centre',
-      url: '/faq',
+      url: '/faq5',
     },
     {
       label: 'Jobs',
-      url: '/faq',
+      url: '/faq6',
     },
     {
       label: 'Cookie Preferences',
-      url: '/faq',
+      url: '/faq7',
     },
     {
       label: 'Legal Notices',
-      url: '/faq',
+      url: '/faq8',
     },
     {
       label: 'Account',
-      url: '/faq',
+      url: '/faq9',
     },
     {
       label: 'Ways to Watch',
-      url: '/faq',
+      url: '/faq10',
     },
     {
       label: 'Corprate Information',
-      url: '/faq',
+      url: '/faq11',
     },
     {
       label: 'Only on Netflix',
-      url: '/faq',
+      url: '/faq12',
     },
     {
       label: 'Media Centre',
-      url: '/faq',
+      url: '/faq13',
     },
     {
       label: 'Terms of Use',
-      url: '/faq',
+      url: '/faq14',
     },
     {
       label: 'Contact Us',
-      url: '/faq',
+      url: '/faq15',
     },
   ];
 

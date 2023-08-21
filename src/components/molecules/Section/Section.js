@@ -10,20 +10,20 @@ export default function Section({ children, title, content, video, videoimg, app
       <Container>
         {image && (
           <ImageWrapper>
-            <img src={image} alt="" />
+            <img src={image.url} alt={image.alt} />
             {download && <Download />}
           </ImageWrapper>
         )}
         <ContentWrapper>
           <Title as="h2">{title}</Title>
-          <Paragraph>{content}</Paragraph>
+          <Paragraph dangerouslySetInnerHTML={{ __html: content }}></Paragraph>
         </ContentWrapper>
         {video && (
           <VideoWrapper>
-            <img src={videoimg} alt="" />
+            <img src={videoimg.url} alt={videoimg.alt} />
             <Video apple={apple}>
               <video loop muted autoPlay={true}>
-                <source src={video} />
+                <source src={video.url} />
               </video>
             </Video>
           </VideoWrapper>

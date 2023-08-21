@@ -6,18 +6,18 @@ import { Paragraph } from 'components/atoms/Paragraph/Paragraph';
 import Newsletter from 'components/organisms/Newsletter/Newsletter';
 import { DividerBottom } from 'components/molecules/Section/Section.styles';
 
-export default function HeroStatic() {
+export default function HeroStatic({ title, first, second }) {
   return (
     <Wrapper>
       <Shadow>
         <Content>
           <Title center="true" bold="true">
-            Unlimited movies, TV shows and more.
+            {title}
           </Title>
           <Paragraph center="true" big="true">
-            Watch anywhere.Cancel anytime.
+            {first}
           </Paragraph>
-          <Paragraph center="true">Ready to watch?Enter your email to create or restart your membership</Paragraph>
+          <Paragraph center="true">{second}</Paragraph>
         </Content>
         <Newsletter />
       </Shadow>
