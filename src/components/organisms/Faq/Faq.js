@@ -7,7 +7,7 @@ import { ReactComponent as Cross } from 'assets/svgs/cross.svg';
 import { Paragraph } from 'components/atoms/Paragraph/Paragraph';
 import Newsletter from '../Newsletter/Newsletter';
 
-export default function Faq({ faqs }) {
+export default function Faq({ faqs, after }) {
   const handleClick = (e) => {
     let question = e.target.nextSibling;
     let current = e.target;
@@ -17,7 +17,7 @@ export default function Faq({ faqs }) {
 
   return (
     <FaqWrapper>
-      <Title center={true} as="h2">
+      <Title center="true" as="h2">
         Często zadawane pytania
       </Title>
 
@@ -31,7 +31,7 @@ export default function Faq({ faqs }) {
           </FaqItem>
         ))}
       </FaqList>
-      <Paragraph center>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam</Paragraph>
+      <Paragraph center="true">{after}</Paragraph>
       <Newsletter />
       <DividerBottom />
     </FaqWrapper>

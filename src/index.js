@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import Root from 'views/Root';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
@@ -17,7 +19,10 @@ root.render(
       }}
     >
       {' '}
-      <Root />
+      <Provider store={store}>
+        {' '}
+        <Root />
+      </Provider>
     </Auth0Provider>
   </React.StrictMode>
 );

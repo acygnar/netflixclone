@@ -1,4 +1,10 @@
 import React from 'react';
+import { PageLoaderWrapper, Background } from './PageLoader.styles';
+
 export default function PageLoader() {
-  return <div>Loading...</div>;
+  return (
+    <Background>
+      <PageLoaderWrapper></PageLoaderWrapper>
+    </Background>
+  );
 }

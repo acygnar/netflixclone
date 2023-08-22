@@ -11,7 +11,7 @@ export default function Download() {
       </ImgWrapper>
       <ContentWrapper>
         <h3>Stranger Things</h3>
-        <p>Downloading...</p>
+        <p>Pobieranie...</p>
       </ContentWrapper>
       <Gif></Gif>
     </DownloadWrapper>

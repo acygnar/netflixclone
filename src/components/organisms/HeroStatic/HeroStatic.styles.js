@@ -25,5 +25,5 @@ export const Shadow = styled.div`
 `;
 
 export const Content = styled.div`
-  max-width: 714px;
+  max-width: 1200px;
 `;

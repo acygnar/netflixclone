@@ -37,6 +37,7 @@ export const query = `
         url
       }
     }
+    textAfterFaq
   }
 }
 `;
@@ -47,7 +48,6 @@ export default function Start() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('useEffect');
     axios
       .post(
         'https://graphql.datocms.com/',
@@ -63,43 +63,15 @@ export default function Start() {
       .then(({ data: { data } }) => {
         setFaqs(data.allFaqs);
         setStartPage(data.startPage);
-        console.log(data.startPage);
       })
       .catch(() => {
-        setError(`Sorry, we couldn't load faqs for you`);
+        setError(`Przepraszamy, nie mogliśmy załadować faqs dla Ciebie.`);
       });
   }, []);
 
   return (
     <Wrapper>
       {startPage && <HeroStatic title={startPage.heroTitle} first={startPage.heroFirstLine} second={startPage.heroSecondLine} />}
-      {/* <Section
-        title="Enjoy on your TV."
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus."
-        videoimg={tv}
-        video={video1}
-      />
-
-      <Section
-        title="Download your shows to watch offline."
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam."
-        image={mobile}
-        download={true}
-      />
-
-      <Section
-        apple={true}
-        title="Watch everywhere."
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam."
-        videoimg={appleDevice}
-        video={video2}
-      />
-
-      <Section
-        title="Create profile for children."
-        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis."
-        image={children} */}
-      {/* /> */}
       {startPage &&
         startPage.sections.map((section) => (
           <Section
@@ -109,11 +81,11 @@ export default function Start() {
             videoimg={section.videoMedium}
             image={section.image}
             video={section.video}
-            apple={section.changeTheVideoFit}
+            apple={section.changeTheVideoFit ? 1 : 0}
             download={section.showDownloadBaner}
           />
         ))}
-      {faqs && <Faq faqs={faqs} />}
+      {faqs && <Faq after={startPage.textAfterFaq} faqs={faqs} />}
       {!faqs && <Paragraph>{error}</Paragraph>}
     </Wrapper>
   );

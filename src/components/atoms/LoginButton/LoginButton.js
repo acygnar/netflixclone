@@ -4,7 +4,7 @@ import { StyledButtonLogin } from './LoginButton.styles';
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <StyledButtonLogin onClick={() => loginWithRedirect()}>Log In</StyledButtonLogin>;
+  return <StyledButtonLogin onClick={() => loginWithRedirect()}>Zaloguj się</StyledButtonLogin>;
 };
 
 export default LoginButton;
