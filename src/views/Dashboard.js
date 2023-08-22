@@ -1,5 +1,35 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import HeroVideo from 'components/organisms/HeroVideo/HeroVideo';
+import axios from 'axios';
+import { Paragraph } from 'components/atoms/Paragraph/Paragraph.js';
 export default function Dashboard() {
-  return <div>Dashboard</div>;
+  const [nowPlaying, setNowPlaying] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(
+        'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1',
+
+        {
+          headers: {
+            authorization: `Bearer ${process.env.REACT_APP_TMDP_TOKEN}`,
+          },
+        }
+      )
+      .then((data) => {
+        setNowPlaying(data.data.results[Math.floor(Math.random() * data.data.results.length)]);
+        console.log(data.data.results[Math.floor(Math.random() * data.data.results.length)].backdrop_path);
+      })
+      .catch(() => {
+        setError(`Przepraszamy, nie mogliśmy załadować filmów i seriali dla Ciebie.`);
+      });
+  }, []);
+
+  return (
+    <div>
+      {nowPlaying && <HeroVideo image={nowPlaying.backdrop_path} />}
+      {!nowPlaying && <Paragraph>{error}</Paragraph>}
+    </div>
+  );
 }
