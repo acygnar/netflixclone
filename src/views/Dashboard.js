@@ -19,7 +19,7 @@ export default function Dashboard() {
       )
       .then((data) => {
         setNowPlaying(data.data.results[Math.floor(Math.random() * data.data.results.length)]);
-        console.log(data.data.results[Math.floor(Math.random() * data.data.results.length)].backdrop_path);
+        console.log(data.data.results[Math.floor(Math.random() * data.data.results.length)]);
       })
       .catch(() => {
         setError(`Przepraszamy, nie mogliśmy załadować filmów i seriali dla Ciebie.`);
@@ -28,7 +28,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      {nowPlaying && <HeroVideo image={nowPlaying.backdrop_path} />}
+      {nowPlaying && <HeroVideo image={nowPlaying.backdrop_path} title={nowPlaying.title} desc={nowPlaying.overview} />}
       {!nowPlaying && <Paragraph>{error}</Paragraph>}
     </div>
   );
