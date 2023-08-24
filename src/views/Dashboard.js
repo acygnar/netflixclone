@@ -7,13 +7,14 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log(process.env.REACT_APP_TMDB_TOKEN);
     axios
       .get(
         'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1',
 
         {
           headers: {
-            authorization: `Bearer ${process.env.REACT_APP_TMDP_TOKEN}`,
+            authorization: `Bearer ${process.env.REACT_APP_TMDB_TOKEN}`,
           },
         }
       )
