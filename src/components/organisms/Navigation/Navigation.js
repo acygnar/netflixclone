@@ -10,7 +10,7 @@ import SecondaryNav from 'components/molecules/SecondaryNav/SecondaryNav';
 const Navigation = () => {
   const { isAuthenticated } = useAuth0();
   return (
-    <Wrapper>
+    <Wrapper background={isAuthenticated ? 'true' : 'false'}>
       <Logo />
       {isAuthenticated && (
         <WrapperLogIn>

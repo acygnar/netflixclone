@@ -14,7 +14,10 @@ export const HeroWrapper = styled.div`
     height: auto;
   }
   .hero-info {
-    bottom: 35%;
+    bottom: 25%;
+    @media (min-width: 1920px) {
+      bottom: 35%;
+    }
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -27,7 +30,10 @@ export const HeroWrapper = styled.div`
       margin-bottom: 1.2vw;
       min-height: 13.2vw;
       position: relative;
-      font-size: clamp(24px, 5vw, 90px);
+      font-size: clamp(16px, 5vw, 40px);
+      @media (min-width: 1500px) {
+        font-size: clamp(24px, 5vw, 85px);
+      }
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -35,7 +41,13 @@ export const HeroWrapper = styled.div`
     }
     p {
       color: #fff;
-      font-size: 1.2vw;
+      font-size: 8px;
+      @media (min-width: 1024px) {
+        font-size: 16px;
+      }
+      @media (min-width: 1500px) {
+        font-size: 22px;
+      }
       font-weight: 400;
       line-height: normal;
       margin-top: 0.1vw;
@@ -65,5 +77,10 @@ export const HeroWrapper = styled.div`
     opacity: 1;
     top: auto;
     width: 100%;
+  }
+  .buttons-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    white-space: nowrap;
   }
 `;

@@ -6,7 +6,7 @@ export default function PlayButton() {
   return (
     <StyledPlayButton>
       <PlayIcon />
-      Odtwórz
+      <span>Odtwórz</span>
     </StyledPlayButton>
   );
 }

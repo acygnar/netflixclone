@@ -7,7 +7,6 @@ export default function Dashboard() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_TMDB_TOKEN);
     axios
       .get(
         'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1',
@@ -19,8 +18,9 @@ export default function Dashboard() {
         }
       )
       .then((data) => {
-        setNowPlaying(data.data.results[Math.floor(Math.random() * data.data.results.length)]);
-        console.log(data.data.results[Math.floor(Math.random() * data.data.results.length)]);
+        let id = Math.floor(Math.random() * data.data.results.length);
+        setNowPlaying(data.data.results[id]);
+        console.log(data.data.results[id]);
       })
       .catch(() => {
         setError(`Przepraszamy, nie mogliśmy załadować filmów i seriali dla Ciebie.`);
@@ -29,7 +29,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      {nowPlaying && <HeroVideo image={nowPlaying.backdrop_path} title={nowPlaying.title} desc={nowPlaying.overview} />}
+      {nowPlaying && <HeroVideo image={nowPlaying.backdrop_path} title={nowPlaying.title} desc={nowPlaying.overview} video={nowPlaying.id} />}
       {!nowPlaying && <Paragraph>{error}</Paragraph>}
     </div>
   );

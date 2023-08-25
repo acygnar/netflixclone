@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledPlayButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.white};
-  color: ${({ theme }) => theme.colors.black};
+export const StyledInfoButton = styled.button`
+  background-color: rgba(109, 109, 110, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   padding: 5px 10px;
   @media (min-width: 1500px) {
     padding: 0.8rem 2.4rem 0.8rem 2rem;
