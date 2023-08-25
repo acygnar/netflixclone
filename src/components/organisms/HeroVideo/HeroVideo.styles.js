@@ -84,3 +84,17 @@ export const HeroWrapper = styled.div`
     white-space: nowrap;
   }
 `;
+export const VideoWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  iframe {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-width: 0px;
+  }
+`;

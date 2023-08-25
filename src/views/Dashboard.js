@@ -9,7 +9,7 @@ export default function Dashboard() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1',
+        'https://api.themoviedb.org/3/movie/now_playing?language=pl-PL&page=2',
 
         {
           headers: {
@@ -20,17 +20,19 @@ export default function Dashboard() {
       .then((data) => {
         let id = Math.floor(Math.random() * data.data.results.length);
         setNowPlaying(data.data.results[id]);
-        console.log(data.data.results[id]);
       })
       .catch(() => {
         setError(`Przepraszamy, nie mogliśmy załadować filmów i seriali dla Ciebie.`);
       });
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <div>
       {nowPlaying && <HeroVideo image={nowPlaying.backdrop_path} title={nowPlaying.title} desc={nowPlaying.overview} video={nowPlaying.id} />}
       {!nowPlaying && <Paragraph>{error}</Paragraph>}
+      <div id="player"></div>
     </div>
   );
 }
