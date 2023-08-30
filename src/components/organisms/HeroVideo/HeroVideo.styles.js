@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
+export const Hero = styled.div`
+  background-color: ${({ theme }) => theme.colors.black};
+  margin-bottom: 20px;
+  padding-bottom: 40%;
+`;
+
 export const HeroWrapper = styled.div`
   width: 100%;
-  position: relative;
+  position: absolute;
   background-color: #000;
   height: 56.25vw;
-  position: absolute;
   width: 100%;
   z-index: 0;
   img {

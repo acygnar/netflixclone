@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { HeroWrapper, VideoWrapper } from './HeroVideo.styles';
+import { HeroWrapper, VideoWrapper, Hero } from './HeroVideo.styles';
 import PlayButton from 'components/atoms/PlayButton/PlayButton';
 import InfoButton from 'components/atoms/InfoButton/InfoButton';
 import truncateString from 'helpers/truncateString';
@@ -38,28 +38,30 @@ export default function HeroVideo({ image, video, title, desc }) {
   }, [video]);
 
   return (
-    <HeroWrapper>
-      <img src={baseUrl + '/' + image} alt="" />
-      {videoUrl && (
-        <VideoWrapper>
-          <iframe
-            width={VIDEO_WIDTH}
-            height={VIDEO_HEIGHT}
-            src={videoUrl}
-            title="YouTube video player"
-            allow="accelerometer; autoplay;clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          />
-        </VideoWrapper>
-      )}
-      <div className="hero-info">
-        <h2>{title}</h2>
-        <p>{truncateString(desc, 18)}</p>
-        <div className="buttons-wrapper">
-          <PlayButton />
-          <InfoButton />
+    <Hero>
+      <HeroWrapper>
+        <img src={baseUrl + '/' + image} alt="" />
+        {videoUrl && (
+          <VideoWrapper>
+            <iframe
+              width={VIDEO_WIDTH}
+              height={VIDEO_HEIGHT}
+              src={videoUrl}
+              title="YouTube video player"
+              allow="accelerometer; autoplay;clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          </VideoWrapper>
+        )}
+        <div className="hero-info">
+          <h2>{title}</h2>
+          <p>{truncateString(desc, 18)}</p>
+          <div className="buttons-wrapper">
+            <PlayButton />
+            <InfoButton />
+          </div>
         </div>
-      </div>
-      <div className="hero-vignette"></div>
-    </HeroWrapper>
+        <div className="hero-vignette"></div>
+      </HeroWrapper>
+    </Hero>
   );
 }
